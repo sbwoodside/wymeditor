@@ -9,19 +9,18 @@
  *        http://www.wymeditor.org/
  *
  * File Name:
- *        basic.html
- *        Basic editor integration example.
+ *        advanced-fr.html
+ *        Editor integration example (fr).
  *        See the documentation for more info.
  *
  * File Authors:
  *        Jean-Francois Hovinne (jf.hovinne a-t wymeditor dotorg)
 -->
-<html debug="true">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>WYMeditor</title>
 <script type="text/javascript" src="../jquery/jquery.js"></script>
-<script type="text/javascript" src="../firebug/firebug.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.explorer.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.mozilla.js"></script>
@@ -30,39 +29,54 @@
 
 <script type="text/javascript">
 
+
+
 jQuery(function() {
 
     jQuery('.wymeditor').wymeditor({
-        stylesheet: 'wym_stylesheet.css',
-        postInit: function(wym){
-            wym.html("<p>This is some text with which to test.</p>");
-            jQuery('.wymtoggle').change( function() {
-            
-                if(jQuery(this).val() == 'on') {
-                    jQuery('.wym_box').show();
-                    jQuery('.wymeditor').hide();
-                } else {
-                    wym.update();
-                    jQuery('.wym_box').hide();
-                    jQuery('.wymeditor').show();
-                }
-            });
-        }
+
+      //options
+      
+      lang: 'fr',
+        
+      //classes panel
+      classesItems: [
+        {'name': 'date', 'title': 'PARA: Date', 'expr': 'p'},
+        {'name': 'important', 'title': 'PARA: Important', 'expr': 'p'}
+      ],
+      
+      //editor css values for visual feedback
+      editorStyles: [
+        {'name': '.date',
+         'css': 'background-color: #ff9; border: 2px solid #ee9;'},
+        {'name': '.important',
+         'css': 'color: red; font-weight: bold; border: 2px solid red;'}
+      ],
+      
+      //dialogs css values
+      dialogStyles: [
+        {'name': '.date', 'css': 'color: #ccf;'},
+        {'name': '.important', 'css': 'color: red; font-weight: bold;'}
+      ],
+      
+      //postInit
+      postInit: function(wym) {
+        jQuery(wym._box).find(wym._options.containersSelector)
+        .removeClass('wym_dropdown').addClass('wym_panel')
+        .find('H2>span').remove();
+      }
     });
-}); // This is some text with which to test.
+});
 
 </script>
+
 
 </head>
 
 <body>
-<h1>WYMeditor basic integration example</h1>
-<p><a href="http://www.wymeditor.org/">WYMeditor</a> is a web-based XHTML WYSIWYM editor.</p>
+<h1>Example d'intégration de WYMeditor</h1>
+<p><a href="http://www.wymeditor.org/">WYMeditor</a> est un éditeur XHTML WYSIWYM pour le web.</p>
 <form method="post" action="">
-<select class="wymtoggle">
-<option value="on">On</option>
-<option value="off">Off</option>
-</select><br />
 <textarea class="wymeditor"></textarea>
 <input type="submit" class="wymupdate" />
 </form>

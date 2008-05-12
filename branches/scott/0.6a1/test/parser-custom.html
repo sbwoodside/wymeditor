@@ -15,13 +15,14 @@
  *
  * File Authors:
  *        Jean-Francois Hovinne (jf.hovinne a-t wymeditor dotorg)
+ *        Bermi Ferrer (http://bermi.org)
 -->
-<html debug="true">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>WYMeditor</title>
+<link rel="stylesheet" type="text/css" media="screen" href="../wymeditor/skins/default/screen.css" />
 <script type="text/javascript" src="../jquery/jquery.js"></script>
-<script type="text/javascript" src="../firebug/firebug.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.explorer.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.mozilla.js"></script>
@@ -30,39 +31,45 @@
 
 <script type="text/javascript">
 
-jQuery(function() {
 
+WYMeditor.XhtmlLexer.prototype.addTokens = function() {
+  // These tokens are for Radiant CMS radius tags  
+  this.addEntryPattern("</?r:", 'Text', 'Text');
+  this.addExitPattern(">", 'Text');
+
+  this.addCommentTokens('Text');
+  this.addScriptTokens('Text');
+  this.addCssTokens('Text');
+  this.addTagTokens('Text');
+
+};
+
+WYMeditor.XhtmlValidator._tags["p"] = {
+  'attributes':
+  {
+    'align':/^(right|left|center|justify)$/,
+    '0':'name'
+  }
+};
+
+jQuery(function() {
     jQuery('.wymeditor').wymeditor({
         stylesheet: 'wym_stylesheet.css',
         postInit: function(wym){
-            wym.html("<p>This is some text with which to test.</p>");
-            jQuery('.wymtoggle').change( function() {
-            
-                if(jQuery(this).val() == 'on') {
-                    jQuery('.wym_box').show();
-                    jQuery('.wymeditor').hide();
-                } else {
-                    wym.update();
-                    jQuery('.wym_box').hide();
-                    jQuery('.wymeditor').show();
-                }
-            });
+            wym.html('<p><r:test>This text is inside a radius tag</r:test></p>'
+                   + '<p align="right" name="test">Right aligned</p>');
         }
     });
-}); // This is some text with which to test.
+});
 
 </script>
 
 </head>
 
 <body>
-<h1>WYMeditor basic integration example</h1>
+<h1>WYMeditor custom XMHTML parser integration example</h1>
 <p><a href="http://www.wymeditor.org/">WYMeditor</a> is a web-based XHTML WYSIWYM editor.</p>
 <form method="post" action="">
-<select class="wymtoggle">
-<option value="on">On</option>
-<option value="off">Off</option>
-</select><br />
 <textarea class="wymeditor"></textarea>
 <input type="submit" class="wymupdate" />
 </form>

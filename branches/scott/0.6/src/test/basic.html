@@ -33,9 +33,8 @@
 jQuery(function() {
 
     jQuery('.wymeditor').wymeditor({
-        stylesheet: 'wym_stylesheet.css',
+
         postInit: function(wym){
-            wym.html("<p>This is some text with which to test.</p>");
             jQuery('.wymtoggle').change( function() {
             
                 if(jQuery(this).val() == 'on') {
@@ -49,7 +48,7 @@ jQuery(function() {
             });
         }
     });
-}); // This is some text with which to test.
+});
 
 </script>
 

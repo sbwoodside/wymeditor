@@ -9,19 +9,26 @@
  *        http://www.wymeditor.org/
  *
  * File Name:
- *        basic.html
- *        Basic editor integration example.
+ *        basic.php
+ *        Basic editor PHP integration example.
  *        See the documentation for more info.
  *
  * File Authors:
  *        Jean-Francois Hovinne (jf.hovinne a-t wymeditor dotorg)
 -->
-<html debug="true">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>WYMeditor</title>
+<style type="text/css">
+    div.result {
+      width: 50%;
+      margin: 10px;
+      padding: 10px;
+      border: 2px solid #ccc;
+    }
+</style>
 <script type="text/javascript" src="../jquery/jquery.js"></script>
-<script type="text/javascript" src="../firebug/firebug.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.explorer.js"></script>
 <script type="text/javascript" src="../wymeditor/jquery.wymeditor.mozilla.js"></script>
@@ -31,25 +38,8 @@
 <script type="text/javascript">
 
 jQuery(function() {
-
-    jQuery('.wymeditor').wymeditor({
-        stylesheet: 'wym_stylesheet.css',
-        postInit: function(wym){
-            wym.html("<p>This is some text with which to test.</p>");
-            jQuery('.wymtoggle').change( function() {
-            
-                if(jQuery(this).val() == 'on') {
-                    jQuery('.wym_box').show();
-                    jQuery('.wymeditor').hide();
-                } else {
-                    wym.update();
-                    jQuery('.wym_box').hide();
-                    jQuery('.wymeditor').show();
-                }
-            });
-        }
-    });
-}); // This is some text with which to test.
+    jQuery('.wymeditor').wymeditor();
+});
 
 </script>
 
@@ -58,15 +48,25 @@ jQuery(function() {
 <body>
 <h1>WYMeditor basic integration example</h1>
 <p><a href="http://www.wymeditor.org/">WYMeditor</a> is a web-based XHTML WYSIWYM editor.</p>
+<?php
+
+if(isset($_POST['wymeditor'])) {
+
+    $result = $_POST['wymeditor'];
+    if(get_magic_quotes_gpc()) $result = stripslashes($result);
+
+    echo("<h2>Result</h2>");
+    echo("<div class=\"result\">$result</div>");
+}
+else print <<<EOF
+
 <form method="post" action="">
-<select class="wymtoggle">
-<option value="on">On</option>
-<option value="off">Off</option>
-</select><br />
-<textarea class="wymeditor"></textarea>
+<textarea name="wymeditor" class="wymeditor"></textarea>
 <input type="submit" class="wymupdate" />
 </form>
 
+EOF;
+?>
 <p>
 <a href="http://sourceforge.net/projects/wym-editor">
 <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=148869&amp;type=1" border="0" alt="SourceForge logo" title="SourceForge" />

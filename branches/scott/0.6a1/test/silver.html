@@ -9,8 +9,8 @@
  *        http://www.wymeditor.org/
  *
  * File Name:
- *        basic.html
- *        Basic editor integration example.
+ *        silver.html
+ *        Basic editor integration example - silver skin.
  *        See the documentation for more info.
  *
  * File Authors:
@@ -33,36 +33,19 @@
 jQuery(function() {
 
     jQuery('.wymeditor').wymeditor({
-        stylesheet: 'wym_stylesheet.css',
-        postInit: function(wym){
-            wym.html("<p>This is some text with which to test.</p>");
-            jQuery('.wymtoggle').change( function() {
-            
-                if(jQuery(this).val() == 'on') {
-                    jQuery('.wym_box').show();
-                    jQuery('.wymeditor').hide();
-                } else {
-                    wym.update();
-                    jQuery('.wym_box').hide();
-                    jQuery('.wymeditor').show();
-                }
-            });
-        }
+        skin: 'silver'
     });
-}); // This is some text with which to test.
+
+});
 
 </script>
 
 </head>
 
 <body>
-<h1>WYMeditor basic integration example</h1>
+<h1>WYMeditor basic integration example - silver skin</h1>
 <p><a href="http://www.wymeditor.org/">WYMeditor</a> is a web-based XHTML WYSIWYM editor.</p>
 <form method="post" action="">
-<select class="wymtoggle">
-<option value="on">On</option>
-<option value="off">Off</option>
-</select><br />
 <textarea class="wymeditor"></textarea>
 <input type="submit" class="wymupdate" />
 </form>
