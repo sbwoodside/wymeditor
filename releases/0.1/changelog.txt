@@ -1,0 +1,116 @@
+2006-01-23 13:41  jf_hovinne
+
+	* Bug fix in displayClasses: now it's possible to put the buttons
+	  in a list, or another container (we use getElementsByTagName)
+
+2005-12-12 17:29  jf_hovinne
+
+	* Bug fix in HTML cleanup (nested elements in list items).
+	  Improved HTML cleanup: now presentational tags and attributes are
+	  removed.
+
+2005-12-08 13:18  jf_hovinne
+
+	* Minor bug fix in img_dblclick_handler.
+
+2005-11-07 15:06  jf_hovinne
+
+	* Fixed a problem that prevented Undo-Redo from working properly
+	  (removed getHTML() from editor.onkeyup event - now, txthtml
+	  content isn't always synchronized with the editor).
+
+2005-11-04 13:45  jf_hovinne
+
+	* Disabled resizing.
+
+2005-11-03 14:33  jf_hovinne
+
+	* Added a simple templating system : now the end-user can easily
+	  insert pre-structured content, using common controls to edit it.
+	  Added custom values in config.js.
+
+2005-11-02 14:22  jf_hovinne
+
+	* Disabled drag-drop.  Improved copy-cut-paste : when the user
+	  copies or cuts from the editor, the content isn't cleaned up, so
+	  its meaning isn't lost.  Added a visual feedback for the
+	  Copy-Paste clean up.	Minor bug fixes.
+
+2005-10-24 16:08  jf_hovinne
+
+	* Added class highlighting in the classes panel.
+
+2005-10-20 09:18  d_reszka
+
+	* moved feedback for incorrect nesting of HTML elements to
+	  display.css
+
+2005-10-20 09:18  d_reszka
+
+	* Added feedback for incorrect nesting of html elements
+
+2005-10-20 09:05  d_reszka
+
+	* Added feedback for incorrect nesting of html elements
+
+2005-10-19 22:55  d_reszka
+
+	* Added white background to toolbars
+
+2005-10-19 15:05  jf_hovinne
+
+	* Improved HTML cleanup (unclosed lists items, html entities
+	  handling).  Added titles to links.  Bug fix when trying to put a
+	  link on an image.  dialog.js code has been reorganized - it is
+	  now easier to add other attributes to links, images, tables.
+
+2005-10-07 15:49  jf_hovinne
+
+	* Removed unnecessary files.  Added readme.txt Added notice in css
+	  files.  Minor modifications before packaging.
+
+2005-10-07 14:24  d_reszka
+
+	* Changed and improved classes, to have better examples.  Added
+	  missing styles.  Improved previews.
+
+2005-10-07 10:01  d_reszka
+
+	* Removed editor.css
+
+	  The content of editor.css is now split into 2 new files: -
+	  layout.css - display.css
+
+	  The intend is to make easier the integration of WYM editor in
+	  your CMS, you can now choose to import only the CSS files you
+	  need.
+
+2005-10-06 16:41  jf_hovinne
+
+	* HTML cleanup improvements : tagnames and attributes to lowercase
+	  - no more unclosed tags or unquoted attributes The cleanup is now
+	  generalized
+
+2005-10-03 17:28  jf_hovinne
+
+	* Added custom configuration values
+
+2005-10-03 13:33  jf_hovinne
+
+	* Minor bug fixes Dialogs : improved CMS integration - added image
+	  preview, width and height - image id is automatically generated
+
+2005-09-28 11:54  jf_hovinne
+
+	* Added basic HTML cleanup
+
+2005-09-27 14:36  jf_hovinne
+
+	* Added paste from clipboard handling Moved doctype in editor.htm
+	  before the license notice, so ie6+ switches to
+	  'standards-compliant' mode
+
+2005-09-26 13:20  jf_hovinne
+
+	* First in.
+
