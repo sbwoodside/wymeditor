@@ -1754,7 +1754,6 @@ WYMeditor.XhtmlValidator = {
       "head",
       "html",
       "meta",
-      "param",
       "script",
       "style",
       "title"
@@ -2122,6 +2121,34 @@ WYMeditor.XhtmlValidator = {
       ]
     },
     "27":"noscript",
+    "param":
+    {
+      "attributes":
+      [
+      "type",
+      "value",
+      "name"
+      ],
+      "required":[
+      "name"
+      ],
+      "inside":"object"
+    },
+    "embed":
+      {
+        "attributes":
+        [
+        "allowfullscreen",
+        "allowscriptaccess",
+        "flashvars",
+        "height",
+        "src",
+        "type",
+        "width",
+        "wmode"
+        ],
+     "inside":"object"
+    },
     "object":
     {
       "attributes":[
@@ -2163,19 +2190,6 @@ WYMeditor.XhtmlValidator = {
       "inside":"select"
     },
     "29":"p",
-    "param":
-    {
-      "attributes":
-      {
-        "0":"type",
-        "valuetype":/^(data|ref|object)$/,
-        "1":"valuetype",
-        "2":"value"
-      },
-      "required":[
-      "name"
-      ]
-    },
     "30":"pre",
     "q":
     {
@@ -3378,13 +3392,13 @@ WYMeditor.XhtmlSaxListener = function()
     "dfn", "dl", "dt", "em", "fieldset", "form", "head", "h1", "h2",
     "h3", "h4", "h5", "h6", "html", "i", "ins",
     "kbd", "label", "legend", "li", "map", "noscript",
-    "object", "ol", "optgroup", "option", "p", "param", "pre", "q",
+    "ol", "optgroup", "option", "p", "pre", "q",
     "samp", "script", "select", "small", "span", "strong", "style",
     "sub", "sup", "table", "tbody", "td", "textarea", "tfoot", "th",
-    "thead", "title", "tr", "tt", "ul", "var", "extends"];
+    "thead", "title", "tr", "tt", "ul", "var", "extends", "object"];
 
 
-    this.inline_tags = ["br", "hr", "img", "input"];
+    this.inline_tags = ["br", "hr", "img", "input", "param", "embed"];
 
     return this;
 };
