@@ -1,0 +1,13 @@
+This is a fork of WYMeditor which is hosted on SVN at http://www.wymeditor.org/ .
+
+They say:
+
+"WYMeditor is a web-based WYSIWYM (What You See Is What You Mean) XHTML editor (not WYSIWYG)."
+
+"WYMeditor's main concept is to leave details of the document's visual layout, and to concentrate on its structure and meaning, while trying to give the user as much comfort as possible (at least as WYSIWYG editors)."
+
+"WYMeditor has been created to generate perfectly structured XHTML strict code, to conform to the W3C XHTML specifications and to facilitate further processing by modern applications."
+
+Changes in this fork:
+
+ - Added ability to paste Flash embed code into the HTML view and have WYMeditor not destroy it.
